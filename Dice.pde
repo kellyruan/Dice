@@ -4,6 +4,9 @@ void setup()
 	noLoop();
 }
 int score;
+int rollNum=1;
+int totalSum=0;
+int avg=0;
 void draw()
 {
 	score=0;
@@ -18,13 +21,18 @@ void draw()
 			score+=die.value;
 		}
 	}
+	totalSum += score;
+	avg = totalSum/rollNum; 
 	textSize(25);
 	fill(0, 102, 153);
-	text("Total sum: "+score, 110, 350);
+	text("Current sum: "+score, 110, 320);
+	text("Roll number: "+rollNum, 120, 350);
+	text("Average sum of roll: "+avg, 60, 380);
 }
 void mousePressed()
 {
 	redraw();
+	rollNum+=1;
 }
 class Die
 {
